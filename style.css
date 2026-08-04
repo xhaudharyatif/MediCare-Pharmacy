@@ -1,0 +1,570 @@
+/* =========================
+   CSS VARIABLES
+========================= */
+
+:root {
+    --primary: #0077b6;
+    --primary-dark: #005f8a;
+    --secondary: #00b4d8;
+
+    --background: #f4f9fc;
+    --light: #eaf7fb;
+    --white: #ffffff;
+
+    --text: #1f2937;
+    --muted: #64748b;
+    --border: #d1d5db;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 4rem;
+
+    --radius: 0.75rem;
+
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+    --font-small: 0.875rem;
+    --font-normal: 1rem;
+    --font-large: 1.25rem;
+    --font-xl: 2rem;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+
+/* =========================
+   GENERAL
+========================= */
+
+.container {
+    width: min(90%, 1200px);
+    margin-inline: auto;
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-size: var(--font-small);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-1);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+    background: var(--primary);
+    color: var(--white);
+    padding: var(--space-2) 0;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.logo {
+    color: var(--white);
+    text-decoration: none;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    font-weight: 700;
+}
+
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.navigation a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.navigation a:hover {
+    background: var(--white);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.navigation a.active {
+    background: var(--white);
+    color: var(--primary);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color: var(--white);
+    padding: clamp(4rem, 10vw, 8rem) 0;
+}
+
+.hero .eyebrow {
+    color: #caf0f8;
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 8vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: var(--space-2);
+}
+
+.hero h1 span {
+    display: block;
+    color: #caf0f8;
+}
+
+.hero-text {
+    max-width: 700px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: var(--space-4);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.button {
+    display: inline-block;
+
+    padding: 0.8rem 1.4rem;
+
+    background: var(--primary);
+    color: var(--white);
+
+    text-decoration: none;
+    text-align: center;
+
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+
+    font-weight: 700;
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.button-outline {
+    background: transparent;
+    border-color: var(--white);
+}
+
+.button-outline:hover {
+    background: var(--white);
+    color: var(--primary);
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+.light-section {
+    background: var(--light);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: var(--space-5);
+}
+
+.section-title h2 {
+    color: var(--primary);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    line-height: 1.2;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 900px;
+    margin-inline: auto;
+}
+
+.about p {
+    color: var(--muted);
+}
+
+
+/* =========================
+   CARD GRID
+========================= */
+
+.card-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: var(--space-4);
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    background: var(--white);
+
+    padding: var(--space-4);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    text-align: center;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-2);
+}
+
+.card h3 {
+    color: var(--primary);
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    margin-bottom: var(--space-1);
+}
+
+.card p {
+    color: var(--muted);
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color: var(--white);
+    text-align: center;
+
+    padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+.page-header h1 {
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: var(--space-2);
+}
+
+.page-header p:last-child {
+    max-width: 650px;
+    margin-inline: auto;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-layout {
+    display: grid;
+    gap: var(--space-5);
+}
+
+.contact-info h2 {
+    color: var(--primary);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: var(--space-2);
+}
+
+.contact-info > p:not(.eyebrow) {
+    color: var(--muted);
+}
+
+.contact-details {
+    display: grid;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+}
+
+.contact-item {
+    background: var(--white);
+    padding: var(--space-2);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+}
+
+.contact-item strong {
+    color: var(--primary);
+}
+
+.contact-item p {
+    color: var(--muted);
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.contact-form {
+    background: var(--white);
+
+    padding: var(--space-4);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    display: grid;
+    gap: var(--space-2);
+}
+
+.form-group {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-weight: 700;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+
+    padding: 0.8rem 1rem;
+
+    border: 1px solid var(--border);
+
+    border-radius: 0.5rem;
+
+    font: inherit;
+
+    color: var(--text);
+    background: var(--white);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contact-form input:hover,
+.contact-form select:hover,
+.contact-form textarea:hover {
+    border-color: var(--secondary);
+}
+
+
+/* Required Day 2 focus state */
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: 3px solid rgba(0, 180, 216, 0.25);
+    border-color: var(--primary);
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta {
+    background: var(--primary);
+    color: var(--white);
+    padding: var(--space-5) 0;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: clamp(1.7rem, 5vw, 2.8rem);
+    margin-bottom: var(--space-4);
+}
+
+.cta .button {
+    background: var(--white);
+    color: var(--primary);
+}
+
+.cta .button:hover {
+    background: #caf0f8;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #023e5a;
+    color: var(--white);
+    padding: var(--space-5) 0;
+    text-align: center;
+}
+
+.footer p {
+    color: #ccecf5;
+}
+
+
+/* =========================
+   FOCUS
+========================= */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #ffe066;
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (min-width: 768px) {
+
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .buttons {
+        flex-direction: row;
+    }
+
+    .about {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr 1.2fr;
+        align-items: start;
+    }
+}
+
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 1024px) {
+
+    .navigation {
+        gap: 1rem;
+    }
+
+    .section {
+        padding: 6rem 0;
+    }
+
+    .card {
+        padding: 2.5rem;
+    }
+}
+
+
+/* =========================
+   LARGE SCREEN
+========================= */
+
+@media (min-width: 1440px) {
+
+    .container {
+        width: min(90%, 1300px);
+    }
+
+    .hero {
+        padding: 9rem 0;
+    }
+}
