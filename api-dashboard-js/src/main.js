@@ -12,7 +12,7 @@ document.querySelector('#app').innerHTML = `
 
     <main class="dashboard">
 
-        <h1>${import.meta.env.VITE_APP_NAME}</h1>
+        <h1>API Dashboard</h1>
 
 
         <!-- WEATHER -->
