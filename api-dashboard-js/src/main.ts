@@ -1,19 +1,23 @@
 import './style.css';
 
-import { loadWeather } from './weather.js';
-import { loadCurrency } from './currency.js';
-import { setupCountrySearch } from './countries.js';
+import { loadWeather } from './weather.ts';
+import { loadCurrency } from './currency.ts';
+import { setupCountrySearch } from './countries.ts';
 
 // ==========================================
 // APP HTML
 // ==========================================
 
-document.querySelector('#app').innerHTML = `
+const app = document.querySelector<HTMLElement>('#app');
 
+if (!app) {
+    throw new Error('App element not found.');
+}
+
+app.innerHTML = `
     <main class="dashboard">
 
         <h1>API Dashboard</h1>
-
 
         <!-- WEATHER -->
 
@@ -29,7 +33,6 @@ document.querySelector('#app').innerHTML = `
 
         </section>
 
-
         <!-- CURRENCY -->
 
         <section class="card">
@@ -43,7 +46,6 @@ document.querySelector('#app').innerHTML = `
             <div id="currency-result"></div>
 
         </section>
-
 
         <!-- COUNTRY SEARCH -->
 
@@ -65,26 +67,42 @@ document.querySelector('#app').innerHTML = `
         </section>
 
     </main>
-
 `;
 
 // ==========================================
 // GET HTML ELEMENTS
 // ==========================================
 
-const weatherStatus = document.querySelector('#weather-status');
+const weatherStatus = document.querySelector<HTMLElement>('#weather-status');
 
-const weatherResult = document.querySelector('#weather-result');
+const weatherResult = document.querySelector<HTMLElement>('#weather-result');
 
-const currencyStatus = document.querySelector('#currency-status');
+const currencyStatus = document.querySelector<HTMLElement>('#currency-status');
 
-const currencyResult = document.querySelector('#currency-result');
+const currencyResult = document.querySelector<HTMLElement>('#currency-result');
 
-const countrySearch = document.querySelector('#country-search');
+const countrySearch =
+    document.querySelector<HTMLInputElement>('#country-search');
 
-const countryStatus = document.querySelector('#country-status');
+const countryStatus = document.querySelector<HTMLElement>('#country-status');
 
-const countryResult = document.querySelector('#country-result');
+const countryResult = document.querySelector<HTMLElement>('#country-result');
+
+// ==========================================
+// VALIDATE REQUIRED ELEMENTS
+// ==========================================
+
+if (
+    !weatherStatus ||
+    !weatherResult ||
+    !currencyStatus ||
+    !currencyResult ||
+    !countrySearch ||
+    !countryStatus ||
+    !countryResult
+) {
+    throw new Error('Required dashboard elements are missing.');
+}
 
 // ==========================================
 // LOAD WEATHER
